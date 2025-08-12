@@ -1,0 +1,25 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Kafka & build artifacts
+*.jar
+*.tgz
+*.zip
+*.tar
+*.out
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env file
+.env
