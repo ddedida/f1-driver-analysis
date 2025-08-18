@@ -21,7 +21,6 @@ SNOWFLAKE_SCHEMA = os.getenv('SNOWFLAKE_SCHEMA')
 SNOWFLAKE_ROLE = os.getenv('SNOWFLAKE_ROLE')
 
 pg_engine = create_engine(f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}")
-df = pd.read_sql_query("SELECT * FROM drivers", pg_engine)
 
 snowflake_url = f"snowflake://{SNOWFLAKE_USER}:{quote_plus(SNOWFLAKE_PASSWORD)}@{SNOWFLAKE_ACCOUNT}/{SNOWFLAKE_DATABASE}/{SNOWFLAKE_SCHEMA}?warehouse={SNOWFLAKE_WAREHOUSE}&role={SNOWFLAKE_ROLE}"
 sf_engine = create_engine(snowflake_url)
@@ -43,6 +42,8 @@ tables = [
 
 try:
     for table in tables:
+        print(f"Processing table: {table}")
+        df = pd.read_sql_query(f"SELECT * FROM {table}", pg_engine)
         df.to_sql(
             name=table,
             con=sf_engine,
