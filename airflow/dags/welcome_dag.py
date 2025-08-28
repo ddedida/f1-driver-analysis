@@ -1,6 +1,5 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.utils.dates import days_ago
+from airflow.providers.standard.operators.python import PythonOperator
 from datetime import datetime
 import requests
 
@@ -12,7 +11,7 @@ def print_date():
 
 dag = DAG(
     'welcome_dag',
-    default_args={'start_date': days_ago(1)},
+    default_args={'start_date': datetime(2025, 8, 1)},
     schedule_interval='0 23 * * *',
     catchup=False
 )
