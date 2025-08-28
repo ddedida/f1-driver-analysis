@@ -14,7 +14,8 @@ def plot_driver_gap_to_fastest(df, colors):
         color="CONSTRUCTOR_ID",
         color_discrete_map=colors,
         text="GAP_TO_FASTEST",
-        category_orders={"DRIVER_CODE": df["DRIVER_CODE"].tolist()}  # 👈 kunci urutan
+        category_orders={"DRIVER_CODE": df["DRIVER_CODE"].tolist()},
+        hover_data=["DRIVER", "CONSTRUCTOR"],
     )
 
     fig.update_traces(
@@ -24,7 +25,7 @@ def plot_driver_gap_to_fastest(df, colors):
 
     fig.update_layout(
         xaxis_title="Driver",
-        yaxis_title="Gap in Race Pace",
+        yaxis_title="Gap to Fastest",
         uniformtext_minsize=8,
         uniformtext_mode='hide',
         showlegend=False,
@@ -60,3 +61,46 @@ def chart_driver_teammate_comparison(df, selected_driver):
     )
 
     return chart
+
+def chart_driver_lap_time(df):
+    last_positions = (
+        df.sort_values("LAP")
+        .groupby("DRIVER_CODE")["POSITION"]
+        .last()
+        .sort_values()
+    )
+
+    driver_order = last_positions.index.tolist()
+
+    fig = px.line(
+        df,
+        x="LAP",
+        y="POSITION",
+        color="DRIVER_CODE",
+        line_group="CONSTRUCTOR_ID",
+        hover_data=["GRID", "DRIVER_CODE", "DRIVER_NAME", "DRIVER_NUMBER", "CONSTRUCTOR"],
+        markers=False,
+        category_orders={"DRIVER_CODE": driver_order},
+        labels={
+            "LAP": "Lap",
+            "POSITION": "Position",
+            "DRIVER_CODE": "Driver",
+        }
+    )
+
+    fig.update_yaxes(
+        dtick=1,
+        tickmode="linear",
+        autorange="reversed"
+    )
+
+    fig.update_xaxes(
+        dtick=5,
+        tickmode="linear",
+    )
+
+    fig.update_layout(
+        height=550,
+    )
+
+    return fig
