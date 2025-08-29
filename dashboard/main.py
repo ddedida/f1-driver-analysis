@@ -1,12 +1,15 @@
 import streamlit as st
 import pandas as pd
+import os
 from utils.charts import plot_driver_gap_to_fastest
 from utils.colors import constructor_colors
 from utils.charts import chart_driver_teammate_comparison
 from utils.charts import chart_driver_lap_time
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def gap_to_fastest():
-    df = pd.read_csv("../data/visualization/driver_avg_pace_with_gap.csv")
+    df = pd.read_csv(os.path.join(BASE_DIR, "data/visualization/driver_avg_pace_with_gap.csv"))
 
     selected_year = st.selectbox("Select Year", sorted(df["YEAR"].unique(), reverse=True), key="gap_year")
     race_df = df[df["YEAR"] == selected_year]
@@ -16,7 +19,7 @@ def gap_to_fastest():
     st.plotly_chart(plot_driver_gap_to_fastest(race_df, constructor_colors))
 
 def driver_teammate_comparison():
-    df = pd.read_csv("../data/visualization/driver_teammate_comparison.csv")
+    df = pd.read_csv(os.path.join(BASE_DIR, "data/visualization/driver_teammate_comparison.csv"))
 
     selected_driver = st.selectbox("Select Driver for Comparison", df["DRIVER"].unique(), key="teammate_driver")
     
@@ -26,7 +29,7 @@ def driver_teammate_comparison():
     st.altair_chart(chart_driver_teammate_comparison(driver_df, selected_driver), use_container_width=True)
 
 def driver_lap_time():
-    df = pd.read_csv("../data/visualization/driver_lap_time.csv")
+    df = pd.read_csv(os.path.join(BASE_DIR, "data/visualization/driver_lap_time.csv"))
 
     selected_year = st.selectbox("Select Year", sorted(df["YEAR"].unique(), reverse=True), key="lap_year")
     race_df = df[df["YEAR"] == selected_year]
