@@ -39,7 +39,7 @@ def driver_lap_time():
     st.plotly_chart(chart_driver_lap_time(race_df))
 
 if __name__ == "__main__":
-    st.title("F1 Driver Performance Tracker")
+    st.title("F1 Driver Performance Analysis")
 
     st.subheader("Driver Average Pace Gap to Fastest")
     gap_to_fastest()
