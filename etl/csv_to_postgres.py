@@ -21,20 +21,20 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 csv_file = [
-    'data/seasons.csv',
-    'data/circuits.csv',
-    'data/constructors.csv',
-    'data/drivers.csv',
-    'data/status.csv',
-    'data/races.csv',
-    'data/constructor_results.csv',
-    'data/constructor_standings.csv',
-    'data/driver_standings.csv',
-    'data/lap_times.csv',
-    'data/pit_stops.csv',
-    'data/qualifying.csv',
-    'data/results.csv',
-    'data/sprint_results.csv',
+    '../data/seasons.csv',
+    '../data/circuits.csv',
+    '../data/constructors.csv',
+    '../data/drivers.csv',
+    '../data/status.csv',
+    '../data/races.csv',
+    '../data/constructor_results.csv',
+    '../data/constructor_standings.csv',
+    '../data/driver_standings.csv',
+    '../data/lap_times.csv',
+    '../data/pit_stops.csv',
+    '../data/qualifying.csv',
+    '../data/results.csv',
+    '../data/sprint_results.csv',
 ]
 
 query_list = [
