@@ -7,6 +7,7 @@
 This project is a learning exercise focused on building a data pipeline for Formula 1 data. The data is sourced from Kaggle in csv format, loaded into PostgreSQL, then stored in Snowflake, and finally visualized through several analyses using Streamlit.
 
 Dataset Link: [Formula 1 Dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020/)
+<br>
 Demo Link: https://ddedida-f1-driver-analysis.streamlit.app/
 
 ### Data Pipeline Architecture
@@ -121,6 +122,8 @@ These are the steps of how to run the project on your local
 19. All set! 🥳🎉
 
 <!-- FUTURE UPDATE -->
+
+## Future Update
 
 - [ ] Add apache airflow in one of the processes
 
