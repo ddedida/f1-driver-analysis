@@ -153,6 +153,7 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 ## Contact
 
 Dewangga Dika Darmawan - [@dewangga3d](https://www.instagram.com/dewangga3d/) - dewangga3d@gmail.com
+<br>
 Project Link: [f1-driver-analysis](https://github.com/ddedida/f1-driver-analysis)
 
 <!-- ACKNOWLEDGMENTS -->
